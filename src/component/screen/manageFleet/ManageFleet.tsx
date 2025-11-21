@@ -12,23 +12,23 @@ type FleetOption = {
   icon: React.ComponentType<{ size: number; color: string }>;
   title: string;
   description: string;
-  type: 'ALL_BOOKINGS' | 'NEW_BOOKINGS';
+  type: 'MANAGE_BOOKING' | 'MANAGE_NEW_BOOKING';
 };
 
 const fleetOptions: FleetOption[] = [
   {
-    id: 'all-bookings',
+    id: 'ManageBooking',
     icon: CheckSquare,
-    title: 'All Bookings',
+    title: 'Manage Booking',
     description: 'View and manage all your bookings',
-    type: 'ALL_BOOKINGS',
+    type: 'MANAGE_BOOKING',
   },
   {
-    id: 'new-bookings',
+    id: 'ManageNewBooking',
     icon: Star,
     title: 'New Bookings',
     description: 'Check out new booking requests',
-    type: 'NEW_BOOKINGS',
+    type: 'MANAGE_NEW_BOOKING',
   },
 ];
 
@@ -54,7 +54,7 @@ const ManageFleet = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
-  const handleOptionPress = (type: 'ALL_BOOKINGS' | 'NEW_BOOKINGS') => {
+  const handleOptionPress = (type: 'MANAGE_BOOKING' | 'MANAGE_NEW_BOOKING') => {
     // Navigate to ManageFleetCard when an option is selected
     navigation.navigate('ManageFleetCard');
   };

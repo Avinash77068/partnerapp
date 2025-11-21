@@ -75,7 +75,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.5)', // CHANGED
     justifyContent: 'center', // CHANGED
     alignItems: 'center', // CHANGED
-
   },
   modalContainer: {
     backgroundColor: 'white',
