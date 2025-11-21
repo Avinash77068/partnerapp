@@ -1,30 +1,21 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import { StatusBar, StyleSheet, useColorScheme } from 'react-native';
-import {
-  SafeAreaProvider,
-  
-} from 'react-native-safe-area-context';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import TotalFile from './src/TotalFile';
-
+import { Provider } from 'react-redux';
+import { store } from './src/config/store';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-     <TotalFile />
-    </SafeAreaProvider>
+    <Provider store={store}>
+      <SafeAreaProvider>
+        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+        <TotalFile />
+      </SafeAreaProvider>
+    </Provider>
   );
 }
-
-
 
 const styles = StyleSheet.create({
   container: {

@@ -2,8 +2,8 @@
 
 // CHANGED: Created axios instance file
 import axios from 'axios';
-
-const API_BASE_URL = 'https://your-api-url.com'; // CHANGED: Replace with your URL
+import Config from 'react-native-config';
+const API_BASE_URL = Config.API_BASE_URL; // Base URL for all API requests
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL, // CHANGED
@@ -16,7 +16,7 @@ const apiClient = axios.create({
 // ============ REQUEST INTERCEPTOR ============
 apiClient.interceptors.request.use(
   async config => {
-    const token = ''; // CHANGED: Replace with secure token storage
+    const token = Config.AUTH_TOKEN_KEY; // CHANGED: Replace with secure token storage
     if (token) {
       config.headers.Authorization = `Bearer ${token}`; // CHANGED
     }
@@ -29,7 +29,12 @@ apiClient.interceptors.request.use(
 apiClient.interceptors.response.use(
   response => response,
   error => {
-    console.log('API ERROR:', error.response?.data || error.message); // CHANGED
+    console.error('API ERROR:', {
+      url: error.config?.url,
+      status: error.response?.status,
+      data: error.response?.data,
+      message: error.message,
+    });
     return Promise.reject(error);
   },
 );
