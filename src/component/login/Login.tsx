@@ -12,6 +12,8 @@ import {
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../navigation/AppNavigator';
+import apiClient from '../../services/api';
+import { LOGIN_API } from '../../utils/endpoints';
 
 type LoginScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -24,13 +26,22 @@ export default function LoginScreen() {
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState('');
 
-  const handleProceed = () => {
+  const handleProceed = async () => {
     if (mobile.length !== 10) {
       setError('Please enter a valid 10-digit mobile number');
       setShowModal(true);
     } else {
-      // Navigate to OTP screen with the mobile number
-      navigation.navigate('OTP', { phoneNumber: mobile });
+      try {
+        // Call LOGIN_API
+        const response = await apiClient.post(LOGIN_API, { mobile });
+        console.log('LOGIN_API response:', response.data);
+        // Navigate to OTP screen with the mobile number
+        navigation.navigate('OTP', { phoneNumber: mobile });
+      } catch (err) {
+        console.error('Error calling LOGIN_API:', err);
+        setError('Failed to send OTP. Please try again.');
+        setShowModal(true);
+      }
     }
   };
 

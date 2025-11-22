@@ -29,7 +29,7 @@ const AppNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="P2PDashboard"
+        initialRouteName="Login"
         screenOptions={{
           headerShown: false,
         }}
