@@ -12,9 +12,8 @@ export type ToolKey =
   | 'ALL_BOOKINGS'
   | 'NEW_BOOKINGS'
   | 'TODAY_DELIVERIES'
-  | 'PENDING_DELIVERIES'
   | 'TODAY_PICKUPS'
-  | 'PENDING_PICKUPS';
+  | 'ONGOING_BOOKINGS';
 
 interface BookingCategory {
   id: ToolKey;
@@ -33,22 +32,16 @@ const bookingCategories: BookingCategory[] = [
     badge: 1,
   },
   {
-    id: 'PENDING_DELIVERIES',
-    icon: Calendar,
-    label: 'Pending Deliveries',
-    badge: null,
-  },
-  {
     id: 'TODAY_PICKUPS',
     icon: Calendar,
     label: "Today's Pickups",
-    badge: null,
+    badge: 1,
   },
   {
-    id: 'PENDING_PICKUPS',
+    id: 'ONGOING_BOOKINGS',
     icon: Calendar,
-    label: 'Pending Pickups',
-    badge: null,
+    label: 'Ongoing Bookings',
+    badge: 1,
   },
 ];
 
@@ -63,17 +56,15 @@ export default function P2PDashboardUI({
     'ALL_BOOKINGS',
     'NEW_BOOKINGS',
     'TODAY_DELIVERIES',
-    'PENDING_DELIVERIES',
     'TODAY_PICKUPS',
-    'PENDING_PICKUPS',
+    'ONGOING_BOOKINGS',
   ] as ToolKey[],
   toolBookingCount = {
     ALL_BOOKINGS: 0,
     NEW_BOOKINGS: 0,
     TODAY_DELIVERIES: 0,
-    PENDING_DELIVERIES: 0,
     TODAY_PICKUPS: 0,
-    PENDING_PICKUPS: 0,
+    ONGOING_BOOKINGS: 0,
   },
   onPressTool,
 }: P2PDashboardUIProps) {

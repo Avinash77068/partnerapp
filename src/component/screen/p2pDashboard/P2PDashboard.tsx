@@ -24,17 +24,15 @@ const P2PDashboard = () => {
     'ALL_BOOKINGS',
     'NEW_BOOKINGS',
     'TODAY_DELIVERIES',
-    'PENDING_DELIVERIES',
     'TODAY_PICKUPS',
-    'PENDING_PICKUPS',
+    'ONGOING_BOOKINGS',
   ];
   const toolBookingCount: Record<ToolKey, number> = {
     ALL_BOOKINGS: 5,
     NEW_BOOKINGS: 2,
     TODAY_DELIVERIES: 1,
-    PENDING_DELIVERIES: 1,
     TODAY_PICKUPS: 1,
-    PENDING_PICKUPS: 1,
+    ONGOING_BOOKINGS: 1,
   };
 
   return (

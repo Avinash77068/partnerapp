@@ -9,6 +9,7 @@ import AllBookingsScreen from '../component/screen/DynamicCard/Card';
 import ManageFleetCard from '../component/screen/manageFleet/ManageFleetCard';
 import BookingDetailsScreen from '../component/screen/DynamicCard/BookingDetails';
 import AssignPickupExecutive from '../component/screen/DynamicCard/AssignPickupExecutive';
+import ProfileManagement from '../component/screen/manageFleet/ProfileManagement';
 
 export type RootStackParamList = {
   Login: undefined;
@@ -19,6 +20,7 @@ export type RootStackParamList = {
   ManageFleetCard: undefined;
   BookingDetails: { bookingId: string };
   AssignPickupExecutive: { bookingId: string };
+  ProfileManagement: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -33,6 +35,11 @@ const AppNavigator = () => {
         }}
       >
         <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen
+          name="AssignPickupExecutive"
+          component={AssignPickupExecutive}
+        />
+        <Stack.Screen name="ProfileManagement" component={ProfileManagement} />
         <Stack.Screen name="OTP" component={OTPScreen} />
         <Stack.Screen name="P2PDashboard" component={P2PDashboard} />
         <Stack.Screen name="ManageFleet" component={ManageFleet} />

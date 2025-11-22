@@ -5,7 +5,6 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigation/AppNavigator';
 import Layout from '../../common/Layout';
-import ManageFleetCard from './ManageFleetCard';
 
 type FleetOption = {
   id: string;
@@ -17,16 +16,16 @@ type FleetOption = {
 
 const fleetOptions: FleetOption[] = [
   {
-    id: 'ManageBooking',
+    id: 'Manage Fleet',
     icon: CheckSquare,
-    title: 'Manage Booking',
+    title: 'Manage Fleet',
     description: 'View and manage all your bookings',
     type: 'MANAGE_BOOKING',
   },
   {
-    id: 'ManageNewBooking',
+    id: 'Manage Profile',
     icon: Star,
-    title: 'New Bookings',
+    title: 'Manage Profile',
     description: 'Check out new booking requests',
     type: 'MANAGE_NEW_BOOKING',
   },
@@ -55,8 +54,11 @@ const ManageFleet = () => {
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const handleOptionPress = (type: 'MANAGE_BOOKING' | 'MANAGE_NEW_BOOKING') => {
-    // Navigate to ManageFleetCard when an option is selected
-    navigation.navigate('ManageFleetCard');
+    if (type === 'MANAGE_BOOKING') {
+      navigation.navigate('ManageFleetCard');
+    } else if (type === 'MANAGE_NEW_BOOKING') {
+      navigation.navigate('ProfileManagement');
+    }
   };
 
   return (
