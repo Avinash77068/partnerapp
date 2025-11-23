@@ -33,7 +33,11 @@ export default function LoginScreen() {
     } else {
       try {
         // Call LOGIN_API
-        const response = await apiClient.post(LOGIN_API, { mobile });
+        const payload = {
+          phoneNumber: mobile,
+          operationType: 1,
+        };
+        const response = await apiClient.post(LOGIN_API, payload);
         console.log('LOGIN_API response:', response.data);
         // Navigate to OTP screen with the mobile number
         navigation.navigate('OTP', { phoneNumber: mobile });

@@ -5,7 +5,7 @@ import axios from 'axios';
 import Config from 'react-native-config';
 import logger from '../utils/logger';
 
-const API_BASE_URL = Config.API_BASE_URL; // Base URL for all API requests
+const API_BASE_URL = 'https://test10-admin.revv.co.in/vendor/vendor-service/api'; // Base URL for all API requests
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL, // CHANGED
