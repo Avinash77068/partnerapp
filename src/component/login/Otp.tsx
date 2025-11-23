@@ -12,6 +12,8 @@ import {
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { RootStackParamList } from '../../navigation/AppNavigator';
+import apiClient from '../../services/api';
+import { VERIFY_OTP_API } from '../../utils/endpoints';
 
 type OTPScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -31,7 +33,18 @@ export default function OTPScreen() {
 
   const handleVerify = async () => {
     if (otp.length === 4) {
-      navigation.navigate('P2PDashboard');
+      const response = await apiClient.post(
+        VERIFY_OTP_API,
+        {
+          phoneNumber,
+          otp,
+        },
+      );
+      if (response.status === 200) {
+        navigation.navigate('P2PDashboard');
+      } else {
+        console.log('Failed to verify OTP');
+      }
     } else {
       console.log('Please enter a valid 4-digit OTP.');
     }
