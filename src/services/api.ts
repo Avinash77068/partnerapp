@@ -2,7 +2,7 @@
 
 // CHANGED: Created axios instance file
 import axios from 'axios';
-import Config from 'react-native-config';
+// import Config from 'react-native-config';
 import logger from '../utils/logger';
 
 const API_BASE_URL = 'https://test10-admin.revv.co.in/vendor/vendor-service/api'; // Base URL for all API requests
@@ -18,7 +18,7 @@ const apiClient = axios.create({
 // ============ REQUEST INTERCEPTOR ============
 apiClient.interceptors.request.use(
   async config => {
-    const token = Config.AUTH_TOKEN_KEY; // CHANGED: Replace with secure token storage
+    const token = 'Config.AUTH_TOKEN_KEY'; // CHANGED: Replace with secure token storage
     if (token) {
       config.headers.Authorization = `Bearer ${token}`; // CHANGED
     }
