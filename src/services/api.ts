@@ -1,26 +1,24 @@
 // api/apiClient.ts
 
-// CHANGED: Created axios instance file
 import axios from 'axios';
-// import Config from 'react-native-config';
 import logger from '../utils/logger';
 
-const API_BASE_URL = 'https://test10-admin.revv.co.in/vendor/vendor-service/api'; // Base URL for all API requests
+const API_BASE_URL ='https://test10-admin.revv.co.in/vendor/vendor-service/api'; 
 
 const apiClient = axios.create({
-  baseURL: API_BASE_URL, // CHANGED
-  timeout: 10000, // CHANGED: 10 sec timeout
+  baseURL: API_BASE_URL, 
+  timeout: 10000, 
   headers: {
-    'Content-Type': 'application/json', // CHANGED
+    'Content-Type': 'application/json', 
   },
 });
 
 // ============ REQUEST INTERCEPTOR ============
 apiClient.interceptors.request.use(
   async config => {
-    const token = 'Config.AUTH_TOKEN_KEY'; // CHANGED: Replace with secure token storage
+    const token = 'Config.AUTH_TOKEN_KEY'; 
     if (token) {
-      config.headers.Authorization = `Bearer ${token}`; // CHANGED
+      config.headers.Authorization = `Bearer ${token}`; 
     }
     logger.log(`API Request: ${config.method?.toUpperCase()} ${config.url}`);
     logger.log('Request Headers: ' + JSON.stringify(config.headers));
@@ -54,4 +52,4 @@ apiClient.interceptors.response.use(
   },
 );
 
-export default apiClient; // CHANGED
+export default apiClient;

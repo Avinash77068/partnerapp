@@ -32,13 +32,13 @@ export default function LoginScreen() {
       setShowModal(true);
     } else {
       try {
-        // Call LOGIN_API
-        const payload = {
-          phoneNumber: mobile,
-          operationType: 1,
-        };
-        const response = await apiClient.post(LOGIN_API, payload);
-        console.log('LOGIN_API response:', response.data);
+        // // Call LOGIN_API
+        // const payload = {
+        //   phoneNumber: mobile,
+        //   operationType: 1,
+        // };
+        // const response = await apiClient.post(LOGIN_API, payload);
+        // console.log('LOGIN_API response:', response.data);
         // Navigate to OTP screen with the mobile number
         navigation.navigate('OTP', { phoneNumber: mobile });
       } catch (err) {

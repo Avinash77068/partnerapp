@@ -33,18 +33,18 @@ export default function OTPScreen() {
 
   const handleVerify = async () => {
     if (otp.length === 4) {
-      const response = await apiClient.post(
-        VERIFY_OTP_API,
-        {
-          phoneNumber,
-          otp,
-        },
-      );
-      if (response.status === 200) {
+      // const response = await apiClient.post(
+      //   VERIFY_OTP_API,
+      //   {
+      //     phoneNumber,
+      //     otp,
+      //   },
+      // );
+      // if (response.status === 200) {
         navigation.navigate('P2PDashboard');
-      } else {
-        console.log('Failed to verify OTP');
-      }
+      // } else {
+      //   console.log('Failed to verify OTP');
+      // }
     } else {
       console.log('Please enter a valid 4-digit OTP.');
     }
