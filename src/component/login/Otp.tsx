@@ -12,8 +12,8 @@ import {
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { RootStackParamList } from '../../navigation/AppNavigator';
-import apiClient from '../../services/api';
-import { VERIFY_OTP_API } from '../../utils/endpoints';
+// import apiClient from '../../services/api';
+// import { VERIFY_OTP_API } from '../../utils/endpoints';
 
 type OTPScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
